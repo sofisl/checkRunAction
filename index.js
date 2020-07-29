@@ -7,7 +7,7 @@ try {
   const author = core.getInput('author');
   const myToken = core.getInput('myToken');
   const octokit = github.getOctokit(myToken);
-  const checkRun;
+  let checkRun = {name: undefined};
   if (conclusion === 'success' && author === 'sofisl') {
     checkRun = await octokit.checks.create({
       owner: 'sofisl',

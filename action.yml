@@ -13,6 +13,10 @@ inputs:
     description: 'github token'
     required: true
     default: 'none'
+  head_sha:
+    description: 'head_sha'
+    required: true
+    default: 'none'
 outputs:
   checkRun:
     description: 'of this test'

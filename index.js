@@ -13,6 +13,7 @@ try {
       owner: 'sofisl',
       repo: 'new2dis',
       name: 'conditional check',
+      head_sha: core.getInput('head_sha'),
       status: 'completed',
       conclusion: 'success',
     });
@@ -21,6 +22,7 @@ try {
       owner: 'sofisl',
       repo: 'new2dis',
       name: 'conditional check',
+      head_sha: core.getInput('head_sha'),
       status: 'completed',
       conclusion: 'failure',
   })

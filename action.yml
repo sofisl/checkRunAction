@@ -1,13 +1,21 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'check if test'
+description: 'check run'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  conclusion:  # id of input
+    description: 'of the test'
     required: true
-    default: 'World'
+    default: 'failure'
+  author:
+    description: 'name'
+    required: true
+    default: 'anyone'
+  myToken:
+    description: 'github token'
+    required: true
+    default: 'none'
 outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  checkRun:
+    description: 'of this test'
 runs:
   using: 'node12'
   main: 'index.js'

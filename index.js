@@ -12,7 +12,7 @@ try {
     checkRun = await octokit.checks.create({
       owner: 'sofisl',
       repo: 'new2dis',
-      name: 'conditional check',
+      name: 'conditional check actual run',
       head_sha: core.getInput('head_sha'),
       status: 'completed',
       conclusion: 'success',
@@ -21,7 +21,7 @@ try {
     checkRun = await octokit.checks.create({
       owner: 'sofisl',
       repo: 'new2dis',
-      name: 'conditional check',
+      name: 'conditional check actual run',
       head_sha: core.getInput('head_sha'),
       status: 'completed',
       conclusion: 'failure',

@@ -1,6 +1,17 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 
+async function checkRun(conclusion) {
+  checkRun = await octokit.checks.create({
+    owner: 'sofisl',
+    repo: 'new2dis',
+    name: 'conditional check actual run',
+    head_sha: core.getInput('head_sha'),
+    status: 'completed',
+    conclusion: conclusion,
+})
+return checkRun;
+}
 try {
   // `who-to-greet` input defined in action metadata file
   const conclusion = core.getInput('conclusion');
@@ -9,26 +20,11 @@ try {
   const octokit = github.getOctokit(myToken);
   let checkRun = {name: undefined};
   if (conclusion === 'success' && author === 'sofisl') {
-    checkRun = await octokit.checks.create({
-      owner: 'sofisl',
-      repo: 'new2dis',
-      name: 'conditional check actual run',
-      head_sha: core.getInput('head_sha'),
-      status: 'completed',
-      conclusion: 'success',
-    });
-  } else {
-    checkRun = await octokit.checks.create({
-      owner: 'sofisl',
-      repo: 'new2dis',
-      name: 'conditional check actual run',
-      head_sha: core.getInput('head_sha'),
-      status: 'completed',
-      conclusion: 'failure',
-  })
-  }
+    checkRun = checkRun('success');
+  }else {
+    checkRun = checkRun('failure');
+   }
   core.setOutput("conclusion", checkRun);
-
 } catch (error) {
   core.setFailed(error.message);
 }

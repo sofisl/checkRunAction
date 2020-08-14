@@ -9,6 +9,10 @@ async function createCheckRun(octokit, conclusion, head_sha) {
     head_sha: head_sha,
     status: 'completed',
     conclusion: conclusion,
+    output: {
+      title: 'A conditional check run',
+      summary: 'Even though your required check did not pass, this will be fine'
+    }    
 })
 return checkRun;
 }
@@ -20,7 +24,8 @@ try {
   const myToken = core.getInput('myToken');
   const octokit = github.getOctokit(myToken);
   const head_sha = core.getInput('head_sha');
-  let checkRun = {name: undefined};
+  console.log("head sha "+head_sha);
+  let checkRun;
   if (conclusion === 'success' && author === 'sofisl') {
     checkRun = createCheckRun(octokit, 'success', head_sha);
   }else {

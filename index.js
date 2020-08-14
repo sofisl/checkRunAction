@@ -17,13 +17,13 @@ async function createCheckRun(octokit, conclusion, head_sha) {
 return checkRun;
 }
 
+
 try {
-  // `who-to-greet` input defined in action metadata file
   const conclusion = core.getInput('conclusion');
   const author = core.getInput('author');
   const myToken = core.getInput('myToken');
   const octokit = github.getOctokit(myToken);
-  const head_sha = core.getInput('head_sha');
+  const head_sha = core.getInput('pull_request_head_sha');
   console.log("head sha "+head_sha);
   let checkRun;
   if (conclusion === 'success' && author === 'sofisl') {

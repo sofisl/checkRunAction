@@ -1,20 +1,36 @@
-name: 'check if test'
-description: 'check run'
+name: 'summary check'
+description: 'checks if a certain test passed based on a given author'
 inputs:
-  conclusion:  # id of input
-    description: 'of the test'
+  conclusion:  
+    description: 'of the test in question'
     required: true
     default: 'failure'
   author:
     description: 'name'
     required: true
-    default: 'anyone'
+    default: 'none'
   myToken:
     description: 'github token'
     required: true
     default: 'none'
   pull_request_head_sha:
     description: 'head_sha'
+    required: true
+    default: 'none'
+  owner:
+    description: 'of the repo the check run is on'
+    required: true
+    default: 'none'
+  repo:
+    description: 'that the check run was run on'
+    required: true 
+    default: 'none'
+  testName:
+    description: 'of the check run'
+    required: true
+    default: 'none'
+  testNameToCheckAgainst:
+    description: 'of the check run'
     required: true
     default: 'none'
 outputs:

@@ -5,10 +5,6 @@ inputs:
     description: 'of the test in question'
     required: true
     default: 'failure'
-  author:
-    description: 'name'
-    required: true
-    default: 'none'
   myToken:
     description: 'github token'
     required: true

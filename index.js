@@ -27,7 +27,7 @@ try {
   const author = core.getInput('author');
   const myToken = core.getInput('myToken');
   const octokit = github.getOctokit(myToken);
-  const testAuthorToCheckAgainst = github.getInput('testAuthorToCheckAgainst');
+  const testAuthorToCheckAgainst = core.getInput('testAuthorToCheckAgainst');
   const head_sha = core.getInput('pull_request_head_sha');
   let checkRun;
   if (conclusion !== 'success' && author === testAuthorToCheckAgainst && testName == testNameToCheckAgainst) {

@@ -2,7 +2,7 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 
 async function createCheckRun(owner, repo, octokit, conclusion, head_sha, testNameToCheckAgainst) {
-  checkRun = await octokit.checks.create({
+  const checkRun = await octokit.checks.create({
     owner,
     repo,
     name: `Summary Check for ${testNameToCheckAgainst}`,

@@ -39,7 +39,7 @@ try {
   const head_sha = core.getInput('pull_request_head_sha');
   const author = getPRAuthor(owner, repo, head_sha);
   let checkRun;
-  if (conclusion !== 'success' && author === testAuthorToCheckAgainst && testName == testNameToCheckAgainst) {
+  if (conclusion !== 'success' && author === testAuthorToCheckAgainst && testName ==+ testNameToCheckAgainst) {
     checkRun = createCheckRun(owner, repo, octokit, 'failure', head_sha, testNameToCheckAgainst);
   } else {
     checkRun = createCheckRun(owner, repo, octokit, 'success', head_sha, testNameToCheckAgainst);

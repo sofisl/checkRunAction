@@ -1,7 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 
-async function getPRAuthor(owner, repo, head_sha) {
+async function getPRAuthor(owner, repo, head_sha, octokit) {
   const prAuthor = (await octokit.repos.listPullRequestsAssociatedWithCommit({
     owner,
     repo,
@@ -37,9 +37,9 @@ try {
   const octokit = github.getOctokit(myToken);
   const testAuthorToCheckAgainst = core.getInput('testAuthorToCheckAgainst');
   const head_sha = core.getInput('pull_request_head_sha');
-  const author = getPRAuthor(owner, repo, head_sha);
+  const author = getPRAuthor(owner, repo, head_sha, octokit);
   let checkRun;
-  if (conclusion !== 'success' && author === testAuthorToCheckAgainst && testName ==+ testNameToCheckAgainst) {
+  if (conclusion !== 'success' && author === testAuthorToCheckAgainst && testName === testNameToCheckAgainst) {
     checkRun = createCheckRun(owner, repo, octokit, 'failure', head_sha, testNameToCheckAgainst);
   } else {
     checkRun = createCheckRun(owner, repo, octokit, 'success', head_sha, testNameToCheckAgainst);

@@ -33,6 +33,10 @@ inputs:
     description: 'of the check run'
     required: true
     default: 'none'
+  testAuthorToCheckAgainst:
+    description: 'to check the author of the check run'
+    required: true
+    default: 'none'
 outputs:
   checkRun:
     description: 'of this test'

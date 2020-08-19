@@ -31,7 +31,8 @@ async function createCheckRun(owner, repo, octokit, conclusion, head_sha, testNa
 async function main() {
   try {
     const owner = core.getInput('owner');
-    const repo = core.getInput('repo');
+    let repo = core.getInput('repo');
+    repo = repo.split("/")[1];
     const testName = core.getInput('testName');
     const testNameToCheckAgainst = core.getInput('testNameToCheckAgainst')
     const conclusion = core.getInput('conclusion');
@@ -39,6 +40,13 @@ async function main() {
     const octokit = github.getOctokit(myToken);
     const testAuthorToCheckAgainst = core.getInput('testAuthorToCheckAgainst');
     const head_sha = core.getInput('pull_request_head_sha');
+    console.log(owner);
+    console.log(repo);
+    console.log(testName);
+    console.log(testNameToCheckAgainst);
+    console.log(conclusion);
+    console.log(testAuthorToCheckAgainst);
+    console.log(head_sha);
     const author = await getPRAuthor(owner, repo, head_sha, octokit);
     let checkRun;
     if (conclusion !== 'success' && author === testAuthorToCheckAgainst && testName === testNameToCheckAgainst) {
